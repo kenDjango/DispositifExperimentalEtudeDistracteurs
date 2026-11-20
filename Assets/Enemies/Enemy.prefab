@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8630600355297962898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8745975318827467963}
+  - component: {fileID: 7093160144095185211}
+  - component: {fileID: 4072458139506219107}
+  - component: {fileID: 7623918055848917868}
+  - component: {fileID: 83751499524153933}
+  m_Layer: 0
+  m_Name: Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8745975318827467963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630600355297962898}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &7093160144095185211
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630600355297962898}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.45
+  m_Height: 1.9
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4072458139506219107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630600355297962898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba75ea234c241448a054de599a8b252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 100
+  destroyOnDeath: 1
+  team: 2
+--- !u!114 &7623918055848917868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630600355297962898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f41c9d8ca191047beffedce7b5699c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  models:
+  - {fileID: 5370818777581598103, guid: 4392943c3e9ebbe4bb6ecf2f081685aa, type: 3}
+  - {fileID: 6041573220988054731, guid: 4dffd31207640794e946a666361b7bc9, type: 3}
+  - {fileID: 3196073333386832567, guid: 8687afa7111c67f49b8ec07d29c5b359, type: 3}
+  - {fileID: 5414154425031098859, guid: 1ab527226d12ee04d80b20afac657581, type: 3}
+  bodyMaterialName: Main
+  eyeMaterialName: Eye
+  spawnScaleDuration: 0.25
+  emissionStrength: 20
+  eyeGlow: 1
+  walkAnimationSpeed: 1.8
+  speedDamping: 0.1
+  fireballWindup: 0.3
+  laserWindup: 0.1
+  separationRadius: 1.8
+  separationStrength: 2.5
+--- !u!114 &83751499524153933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630600355297962898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751411d37bc27554c84ff92e1ae45e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBar
+  health: {fileID: 4072458139506219107}
+  heightOffset: 1.3
+  size: {x: 80, y: 9}
+  fillColor: {r: 0.9, g: 0.2, b: 0.15, a: 1}
+  backColor: {r: 0.05, g: 0.05, b: 0.07, a: 0.85}
+  trailColor: {r: 1, g: 0.85, b: 0.6, a: 1}
+  trailDelay: 0.4
+  trailSpeed: 1.2

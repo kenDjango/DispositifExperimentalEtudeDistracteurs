@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{{{ PRODUCT_NAME }}}</title>
+    <style>
+      html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; }
+      /* Image du jeu en 1920×1080, mise à l'échelle de la fenêtre (bandes noires hors 16:9). */
+      #unity-canvas { position: absolute; display: block; background: {{{ BACKGROUND_COLOR }}}; }
+      #loading { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+                 color: #c8ab6e; font: 24px sans-serif; pointer-events: none; }
+    </style>
+  </head>
+  <body>
+    <canvas id="unity-canvas" width="{{{ WIDTH }}}" height="{{{ HEIGHT }}}" tabindex="-1"></canvas>
+    <div id="loading">Chargement… 0 %</div>
+    <script src="Build/{{{ LOADER_FILENAME }}}"></script>
+    <script>
+      // Rendu toujours en WIDTH × HEIGHT (attributs du canvas) : seule la taille affichée suit la fenêtre.
+      // C'est l'élément canvas lui-même qui est redimensionné et centré (pas object-fit), pour que la position
+      // de la souris corresponde à l'image.
+      var canvas = document.querySelector("#unity-canvas");
+      var loading = document.querySelector("#loading");
+      var renderWidth = {{{ WIDTH }}}, renderHeight = {{{ HEIGHT }}};
+
+      function fit() {
+        var scale = Math.min(window.innerWidth / renderWidth, window.innerHeight / renderHeight);
+        var width = Math.floor(renderWidth * scale), height = Math.floor(renderHeight * scale);
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+        canvas.style.left = Math.floor((window.innerWidth - width) / 2) + "px";
+        canvas.style.top = Math.floor((window.innerHeight - height) / 2) + "px";
+      }
+      window.addEventListener("resize", fit);
+      fit();
+
+      createUnityInstance(canvas, {
+        arguments: [],
+        dataUrl: "Build/{{{ DATA_FILENAME }}}",
+        frameworkUrl: "Build/{{{ FRAMEWORK_FILENAME }}}",
+#if USE_WASM
+        codeUrl: "Build/{{{ CODE_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+        symbolsUrl: "Build/{{{ SYMBOLS_FILENAME }}}",
+#endif
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+        productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+        productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+        // Taille de rendu fixée par les attributs du canvas, indépendante de sa taille à l'écran et de la densité
+        // de pixels de l'écran.
+        matchWebGLToCanvasSize: false,
+        devicePixelRatio: 1,
+      }, function (progress) {
+        loading.textContent = "Chargement… " + Math.round(progress * 100) + " %";
+      }).then(function (unityInstance) {
+        loading.remove();
+        canvas.width = renderWidth;
+        canvas.height = renderHeight;
+        canvas.focus();
+      }).catch(function (message) {
+        alert(message);
+      });
+    </script>
+  </body>
+</html>

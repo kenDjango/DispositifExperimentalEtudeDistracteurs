@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f25cbc0b569d8c3459827e4dfaeb6e79, type: 3}
+  m_Name: Dash
+  m_EditorClassIdentifier: Assembly-CSharp::DashAbility
+  displayName: Dash
+  icon: {fileID: 2187148139637259302, guid: f19a7571d662cbd4bbb188f729178bc3, type: 3}
+  cooldown: 6
+  maxDistance: 10
+  duration: 0.15
+  vfxPrefab: {fileID: 3528093535577996116, guid: c5e6ee4cae6f8fa48b073a7121676a71, type: 3}

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c536e764765c1b4ea2ed18cbf10f277, type: 3}
+  m_Name: EnemyFireball
+  m_EditorClassIdentifier: Assembly-CSharp::FireballAbility
+  displayName: Boule de feu (ennemi)
+  icon: {fileID: 0}
+  cooldown: 5
+  projectilePrefab: {fileID: 8803711652640320671, guid: 72b136f934f89d44685e46aa6818264d, type: 3}
+  damage: 40
+  speed: 12
+  range: 16
+  radius: 0.4
+  castHeight: 1
